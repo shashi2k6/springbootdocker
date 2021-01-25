@@ -12,7 +12,7 @@ use the same container name of the mysql instance in the application.properties 
 
 spring.datasource.url = jdbc:mysql://mysql-standalone:3306/test
 
-
+`docker run -p 8086:8080 --name users-mysql --link mysql-standalone:mysql -d users-mysql`
 
 ### `Create a Dockerfile for creating a docker image from the Spring Boot Application :`
 
