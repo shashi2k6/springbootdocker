@@ -29,3 +29,12 @@ Using the Dockerfile create the Docker image.
 3. docker logs <container_name>
 4. docker container rm <container_name>
 5. docker image rm <image_name>
+
+### `Stop and remove all containers : `
+
+1. docker stop $(docker ps -a -q)
+2. docker rm $(docker ps -a -q)
+
+### `docker images -a`
+1. docker images -a
+2. docker rmi $(docker images -a -q)
