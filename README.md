@@ -1,5 +1,4 @@
-## `Spring Boot on Docker connecting`
-    `to MySQL Docker container :`
+### `Spring Boot on Docker connecting to MySQL Docker container :`
 
 ### `Command to run the mysql container :`
 
