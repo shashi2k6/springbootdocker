@@ -66,7 +66,7 @@ The command substitution syntax, command $(command), used in the commands is ava
 Purging All Unused or Dangling Images, Containers, Volumes, and Networks
 Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not associated with a container):
 
-docker system prune
+### `docker system prune :`
 
 To additionally remove any stopped containers and all unused images (not just dangling images), add the -a flag to the command:
 
@@ -95,7 +95,7 @@ docker images -f dangling=true
 
 ### `Remove:`
 
-docker image prune
+Docker image prune :
 
 Removing images according to a pattern
 You can find all the images that match a pattern using a combination of docker images and grep. Once you’re satisfied, you can delete them by using awk to pass the IDs to docker rmi. Note that these utilities are not supplied by Docker and are not necessarily available on all systems:
@@ -108,7 +108,7 @@ docker images -a |  grep "pattern"
 
 docker images -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
 
-Remove all images
+Remove all images :
 All the Docker images on a system can be listed by adding -a to the docker images command. Once you’re sure you want to delete them all, you can add the -q flag to pass the Image ID to docker rmi:
 
 ### `List:`
@@ -119,7 +119,7 @@ docker images -a
 
 docker rmi $(docker images -a -q)
 
-Removing Containers
+Removing Containers :
 Remove one or more specific containers
 Use the docker ps command with the -a flag to locate the name or ID of the containers you want to remove:
 
@@ -131,14 +131,14 @@ docker ps -a
 
 docker rm ID_or_Name ID_or_Name
 
-Remove a container upon exit
+Remove a container upon exit :
 If you know when you’re creating a container that you won’t want to keep it around once you’re done, you can run docker run --rm to automatically delete it when it exits.
 
 ### `Run and Remove:`
 
 docker run --rm image_name
 
-Remove all exited containers
+Remove all exited containers :
 You can locate containers using docker ps -a and filter them by their status: created, restarting, running, paused, or exited. To review the list of exited containers, use the -f flag to filter based on status. When you’ve verified you want to remove those containers, using -q to pass the IDs to the docker rm command.
 
 ### `List:`
@@ -171,7 +171,7 @@ docker ps -a |  grep "pattern”
 
 docker ps -a | grep "pattern" | awk '{print $1}' | xargs docker rm
 
-Stop and remove all containers
+Stop and remove all containers:
 You can review the containers on your system with docker ps. Adding the -a flag will show all containers. When you’re sure you want to delete them, you can add the -q flag to supply the IDs to the docker stop and docker rm commands:
 
 ### `List:`
@@ -183,7 +183,7 @@ docker ps -a
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 
-Removing Volumes
+Removing Volumes:
 Remove one or more specific volumes - Docker 1.9 and later
 Use the docker volume ls command to locate the volume name or names you wish to delete. Then you can remove one or more volumes with the docker volume rm command:
 
@@ -206,12 +206,15 @@ docker volume ls -f dangling=true
 
 docker volume prune
 
-Remove a container and its volume
+Remove a container and its volume :
 If you created an unnamed volume, it can be deleted at the same time as the container with the -v flag. Note that this only works with unnamed volumes. When the container is successfully removed, its ID is displayed. Note that no reference is made to the removal of the volume. If it is unnamed, it is silently removed from the system. If it is named, it silently stays present.
 
 ### `Remove:`
 
-docker rm -v container_name
+docker rm -v container_name:
 
-Conclusion
+Conclusion :
+
 This guide covers some of the common commands used to remove images, containers, and volumes with Docker. There are many other combinations and flags that can be used with each. For a comprehensive guide to what’s available, see the Docker documentation for docker system prune, docker rmi, docker rm and docker volume rm. If there are common cleanup tasks you’d like to see in the guide, please ask or make suggestions in the comments.
+
+
